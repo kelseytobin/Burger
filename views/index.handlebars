@@ -2,6 +2,7 @@
 
 <h2>Burgers to Eat</h2>
 
+
 <ul>
   {{#each burgers}}
     {{#unless devoured}}
@@ -25,8 +26,27 @@
 
   <div class="form-group">
     <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    <input type="text" id="burgerName" name="name">
   </div>
 
-  <button type="submit">Add Cat</button>
+  <button type="submit" id="submit">Add yo burger!</button>
 </form>
+
+{{!-- add submit button functiionality and ajax post --}}
+<script type="text/Javascript">
+
+  $("#submit").on("click", function (event) {
+    event.preventDefault();
+
+    //grab form elements
+    var burger = $("#burgerName").val().trim();
+
+    //test to see input is being grabbed - this works
+    console.log(burger);
+
+
+
+  });
+
+
+</script>
