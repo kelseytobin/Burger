@@ -1,5 +1,3 @@
-var connection = require ("../config/connection.js");
-
 $(function () {
     //form submit on click
     $("#submit").on("click", function (event) {
