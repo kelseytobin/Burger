@@ -1,14 +1,10 @@
 //set up express package 
 var express = require("express");
 
-var bodyParser = require("body-parser");
-
 var PORT = process.env.PORT || 3000;
 
 var app = express();
 
-//require orm file
-var orm = require("./config/orm.js");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
