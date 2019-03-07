@@ -7,10 +7,9 @@
   <li>
     {{this.burger_name}}
 
-    <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-      <input type="hidden" name="eaten" value="true">
+   
       <button type="submit" id="devour">DEVOUR!</button>
-    </form>
+
 
     
   </li>
@@ -48,7 +47,7 @@
 {{!-- <script type="text/Javascript">
 
   $(function(){
-  $(".change-status").on("click", function(event) {
+  $("#devour").on("click", function(event) {
     var id = $(this).data("id");
     var burger_name = $(this).data("burger_name");
     var devoured = $(this).data("devoured");
