@@ -3,8 +3,20 @@
 
 <ul>
   {{#each burgers}}
+  {{#unless this.devoured}}
+  <li>
+    {{this.burger_name}}
 
-  {{/each}}
+          <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+            <input type="hidden" name="eaten" value="true">
+            <button type="submit">DEVOUR!</button>
+          </form>
+
+          {{!-- {{> burgers/devour-burger}} --}}
+      </li>
+    {{/unless}}
+
+    {{/each}}
 </ul>
 
 
@@ -22,18 +34,18 @@
 {{!-- add submit button functiionality and ajax put --}}
 <script type="text/Javascript">
 
-$(function(){
-  $(".devour").on("click", function(event) {
+  $(function(){
+  $(".change-status").on("click", function(event) {
     var id = $(this).data("id");
-    var name = $(this).data("name");
-    var eaten = $(this).data("eaten");
+    var burger_name = $(this).data("burger_name");
+    var devoured = $(this).data("devoured");
 
     var newDevour = {
-      devoured: eaten
+      devoured: devoured
     };
  
   //send put request
-  $.ajax("api/burgers" + id + name, {
+  $.ajax("api/burgers" + burger_name, {
     type: "PUT", 
     data: newDevour
   }).then(function () {
