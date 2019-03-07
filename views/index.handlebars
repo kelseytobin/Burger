@@ -1,22 +1,33 @@
 <h1>Burgers!</h1>
 
-
+<h2>Burgers to Munch!</h2>
 <ul>
   {{#each burgers}}
   {{#unless this.devoured}}
   <li>
     {{this.burger_name}}
 
-          <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
-            <input type="hidden" name="eaten" value="true">
-            <button type="submit">DEVOUR!</button>
-          </form>
+    <form action="burgers/update/{{this.id}}?_method=PUT" method="POST">
+      <input type="hidden" name="eaten" value="true">
+      <button type="submit" id="devour">DEVOUR!</button>
+    </form>
 
-          {{!-- {{> burgers/devour-burger}} --}}
-      </li>
-    {{/unless}}
+    
+  </li>
+  {{/unless}}
 
-    {{/each}}
+  {{/each}}
+</ul>
+
+<h2>Devoured Burgers</h2>
+<ul>
+  {{#each burgers}}
+  {{#if this.devoured}}
+  <li>
+    {{this.burger_name}}
+  </li>
+  {{/if}}
+  {{/each}}
 </ul>
 
 
@@ -31,8 +42,10 @@
   <button type="submit" id="submit">Add yo burger!</button>
 </form>
 
+
+{{!-- moved to assets folder and seperate file to see if file paths can link up better --}}
 {{!-- add submit button functiionality and ajax put --}}
-<script type="text/Javascript">
+{{!-- <script type="text/Javascript">
 
   $(function(){
   $(".change-status").on("click", function(event) {
@@ -86,3 +99,4 @@
 
 
 </script>
+--}}
